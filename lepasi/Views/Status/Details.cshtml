@@ -1,0 +1,43 @@
+﻿@model lepasi.status
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Models/Edycja/Edycja.css" rel="stylesheet" />
+    <link href="~/Models/Form/style.css" rel="stylesheet" />
+    <link href="~/Models/Table/Edity.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body style="color:black; text-shadow:none">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <div class="box_leavy_comments">
+        <div class=".box_leavy_comments">
+            <div>
+                <h4>status</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ST_nazwa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ST_nazwa)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ST_id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+            </div>
+        </div>
+</body>
+</html>

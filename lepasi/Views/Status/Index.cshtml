@@ -1,0 +1,68 @@
+﻿@model IEnumerable<lepasi.status>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/Sortowanie/sort.js"></script>
+    <link href="~/Models/Table/Table.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Status</title>
+    <style>
+        #myInput {
+            background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+            background-position: 10px 12px; /* Position the search icon */
+            background-repeat: no-repeat; /* Do not repeat the icon image */
+            width: 100%; /* Full-width */
+            font-size: 16px; /* Increase font-size */
+            padding: 12px 20px 12px 40px; /* Add some padding */
+            border: 1px solid #ddd; /* Add a grey border */
+            margin-bottom: 12px; /* Add some space below the input */
+        }
+
+        .chrum {
+            position: relative;
+            left: 750px;
+        }
+
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        @{ Html.RenderAction("Menu", "Menu");}
+    </div>
+   
+    <div class="chrum" style="color:black">
+        <table class="table" align="center" style="color:black" id="myTable">
+            <tr class="header">
+                <th onclick="sortTable(0)">
+                    @Html.DisplayNameFor(model => model.ST_nazwa)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ST_nazwa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.ST_id }) |
+                    @Html.ActionLink("Nowy", "Create", new { id = item.ST_id }) |
+                    @Html.ActionLink("Usuń", "Delete", new { id = item.ST_id })
+                </td>
+            </tr>
+    }
+        </table>
+    </div>
+</body>
+</html>

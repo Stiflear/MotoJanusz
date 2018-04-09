@@ -1,0 +1,132 @@
+﻿@model lepasi.samochod
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Models/Table/Create.css" rel="stylesheet" />
+    <link href="~/Models/Form/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <style>
+        .box_leavy_comments {
+            padding: 2px 20px 0px 30px;
+            position: relative;
+            left: 50px;
+            margin: 20px 0 30px;
+            width: 20%;
+            /*padding: 19px;*/
+            border: 1px solid #C2C0B8;
+            background-color: white;
+            -webkit-box-shadow: 0 0 60px 10px rgba(0, 0, 0, .1) inset, 0 5px 0 -4px white, 0 5px 0 -3px #C2C0B8, 0 11px 0 -8px white, 0 11px 0 -7px #C2C0B8, 0 17px 0 -12px white, 0 17px 0 -11px #C2C0B8;
+            -moz-box-shadow: 0 0 60px 10px rgba(0, 0, 0, .1) inset, 0 5px 0 -4px #fff, 0 5px 0 -3px #c2c0b8, 0 11px 0 -8px #fff, 0 11px 0 -7px #c2c0b8, 0 17px 0 -12px #fff, 0 17px 0 -11px #c2c0b8;
+            box-shadow: 0 0 60px 10px rgba(0, 0, 0, .1) inset, 0 5px 0 -4px white, 0 5px 0 -3px #C2C0B8, 0 11px 0 -8px white, 0 11px 0 -7px #C2C0B8, 0 17px 0 -12px white, 0 17px 0 -11px #C2C0B8;
+        }
+    </style>
+</head>
+<body>
+    <div class="box_leavy_comments ">
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>samochod</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SA_model)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SA_model)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SA_stan)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SA_stan)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SA_cena)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SA_cena)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SA_kolor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SA_kolor)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SA_rok_produkcji)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SA_rok_produkcji)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SA_kraj_pochodzenia)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SA_kraj_pochodzenia)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SA_liczba_miejsc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SA_liczba_miejsc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.marka.MA_nazwa)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.marka.MA_nazwa)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.status.ST_nazwa)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.status.ST_nazwa)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.typ.TY_nazwa)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.typ.TY_nazwa)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+    }
+        </div>
+    </div>
+</body>
+</html>

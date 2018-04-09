@@ -1,0 +1,18 @@
+﻿.editPosition {
+    position: relative;
+    left: 300px;
+}
+
+.box_leavy_comments {
+    padding: 2px 20px 0px 30px;
+    position: relative;
+    left: 50px;
+    margin: 20px 0 30px;
+    width: 20%;
+    /*padding: 19px;*/
+    border: 1px solid #C2C0B8;
+    background-color: white;
+    -webkit-box-shadow: 0 0 60px 10px rgba(0, 0, 0, .1) inset, 0 5px 0 -4px white, 0 5px 0 -3px #C2C0B8, 0 11px 0 -8px white, 0 11px 0 -7px #C2C0B8, 0 17px 0 -12px white, 0 17px 0 -11px #C2C0B8;
+    -moz-box-shadow: 0 0 60px 10px rgba(0, 0, 0, .1) inset, 0 5px 0 -4px #fff, 0 5px 0 -3px #c2c0b8, 0 11px 0 -8px #fff, 0 11px 0 -7px #c2c0b8, 0 17px 0 -12px #fff, 0 17px 0 -11px #c2c0b8;
+    box-shadow: 0 0 60px 10px rgba(0, 0, 0, .1) inset, 0 5px 0 -4px white, 0 5px 0 -3px #C2C0B8, 0 11px 0 -8px white, 0 11px 0 -7px #C2C0B8, 0 17px 0 -12px white, 0 17px 0 -11px #C2C0B8;
+}

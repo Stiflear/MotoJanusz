@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MotoJanuszModelStoreContainer" CdmEntityContainer="MotoJanuszEntities">
+    <EntitySetMapping Name="markas">
+      <EntityTypeMapping TypeName="MotoJanuszModel.marka">
+        <MappingFragment StoreEntitySet="marka">
+          <ScalarProperty Name="MA_id" ColumnName="MA_id" />
+          <ScalarProperty Name="MA_nazwa" ColumnName="MA_nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="samochods">
+      <EntityTypeMapping TypeName="MotoJanuszModel.samochod">
+        <MappingFragment StoreEntitySet="samochod">
+          <ScalarProperty Name="SA_id" ColumnName="SA_id" />
+          <ScalarProperty Name="TY_id" ColumnName="TY_id" />
+          <ScalarProperty Name="MA_id" ColumnName="MA_id" />
+          <ScalarProperty Name="ST_id" ColumnName="ST_id" />
+          <ScalarProperty Name="SA_model" ColumnName="SA_model" />
+          <ScalarProperty Name="SA_stan" ColumnName="SA_stan" />
+          <ScalarProperty Name="SA_cena" ColumnName="SA_cena" />
+          <ScalarProperty Name="SA_kolor" ColumnName="SA_kolor" />
+          <ScalarProperty Name="SA_rok_produkcji" ColumnName="SA_rok_produkcji" />
+          <ScalarProperty Name="SA_kraj_pochodzenia" ColumnName="SA_kraj_pochodzenia" />
+          <ScalarProperty Name="SA_liczba_miejsc" ColumnName="SA_liczba_miejsc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="MotoJanuszModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="ST_id" ColumnName="ST_id" />
+          <ScalarProperty Name="ST_nazwa" ColumnName="ST_nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typs">
+      <EntityTypeMapping TypeName="MotoJanuszModel.typ">
+        <MappingFragment StoreEntitySet="typ">
+          <ScalarProperty Name="TY_id" ColumnName="TY_id" />
+          <ScalarProperty Name="TY_nazwa" ColumnName="TY_nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

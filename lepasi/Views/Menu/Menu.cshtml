@@ -1,0 +1,54 @@
+﻿    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Pushy - Off-Canvas Navigation Menu</title>
+    <meta name="description" content="Pushy is an off-canvas navigation menu for your website.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="~/Models/Menu/demo.css" rel="stylesheet" />
+    <link href="~/Models/Menu/normalize.css" rel="stylesheet" />
+    <!-- Pushy CSS -->
+    <link href="~/Models/Menu/pushy.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <header class="site-header push">Moto Janusz</header>
+    <!-- Pushy Menu -->
+    <nav class="pushy pushy-left" data-focus="#first-link">
+        <div class="pushy-content">
+            <ul>
+                <li class="pushy-link">
+                    <div>
+                        @Html.ActionLink("Strona głóna", "Index", "MainSite")
+                    </div>
+                </li>
+
+                <li class="pushy-submenu">
+                    <button>Katalogi</button>
+                    <ul>
+                        <li class="pushy-link"><a @Html.ActionLink("Samochody", "Index", "samochods")></a></li>
+                        <li class="pushy-link"><a @Html.ActionLink("Marka", "Index", "samochods")></a></li>
+                        <li class="pushy-link"><a @Html.ActionLink("Status", "Index", "Status")></a></li>
+                        <li class="pushy-link"><a @Html.ActionLink("Typ", "Index", "samochods")></a></li>
+                        @*<li class="pushy-link"><a href="#">Item 2</a></li>
+                            <li class="pushy-link"><a href="#">Item 3</a></li>*@
+                    </ul>
+                </li>
+
+
+                @*<li class="pushy-link"><a href="">Katalog</a></li>
+                    <li class="pushy-link"><a href="#">Item 3</a></li>
+                    <li class="pushy-link"><a href="#">Item 4</a></li>*@
+            </ul>
+        </div>
+    </nav>
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
+    <!-- Your Content -->
+    <div id="container">
+        <!-- Menu Button -->
+        <button class="menu-btn">&#9776; Menu</button>
+    </div>
+
+    <!-- Pushy JS -->
+    <script src="~/Scripts/Menu/pushy.min.js"></script>
+

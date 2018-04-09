@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MotoJanuszModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="marka">
+          <Key>
+            <PropertyRef Name="MA_id" />
+          </Key>
+          <Property Name="MA_id" Type="int" Nullable="false" />
+          <Property Name="MA_nazwa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="samochod">
+          <Key>
+            <PropertyRef Name="SA_id" />
+          </Key>
+          <Property Name="SA_id" Type="int" Nullable="false" />
+          <Property Name="TY_id" Type="int" Nullable="false" />
+          <Property Name="MA_id" Type="int" Nullable="false" />
+          <Property Name="ST_id" Type="int" Nullable="false" />
+          <Property Name="SA_model" Type="varchar" MaxLength="200" />
+          <Property Name="SA_stan" Type="varchar" MaxLength="50" />
+          <Property Name="SA_cena" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="SA_kolor" Type="varchar" MaxLength="50" />
+          <Property Name="SA_rok_produkcji" Type="int" />
+          <Property Name="SA_kraj_pochodzenia" Type="varchar" MaxLength="50" />
+          <Property Name="SA_liczba_miejsc" Type="int" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="ST_id" />
+          </Key>
+          <Property Name="ST_id" Type="int" Nullable="false" />
+          <Property Name="ST_nazwa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="typ">
+          <Key>
+            <PropertyRef Name="TY_id" />
+          </Key>
+          <Property Name="TY_id" Type="int" Nullable="false" />
+          <Property Name="TY_nazwa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_SAMOCHOD_POSIADA_STATUS">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="ST_id" />
+            </Principal>
+            <Dependent Role="samochod">
+              <PropertyRef Name="ST_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMOCHOD_RELATIONS_MARKA">
+          <End Role="marka" Type="Self.marka" Multiplicity="1" />
+          <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marka">
+              <PropertyRef Name="MA_id" />
+            </Principal>
+            <Dependent Role="samochod">
+              <PropertyRef Name="MA_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMOCHOD_RELATIONS_TYP">
+          <End Role="typ" Type="Self.typ" Multiplicity="1" />
+          <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typ">
+              <PropertyRef Name="TY_id" />
+            </Principal>
+            <Dependent Role="samochod">
+              <PropertyRef Name="TY_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MotoJanuszModelStoreContainer">
+          <EntitySet Name="marka" EntityType="Self.marka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="samochod" EntityType="Self.samochod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="typ" EntityType="Self.typ" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SAMOCHOD_POSIADA_STATUS" Association="Self.FK_SAMOCHOD_POSIADA_STATUS">
+            <End Role="status" EntitySet="status" />
+            <End Role="samochod" EntitySet="samochod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMOCHOD_RELATIONS_MARKA" Association="Self.FK_SAMOCHOD_RELATIONS_MARKA">
+            <End Role="marka" EntitySet="marka" />
+            <End Role="samochod" EntitySet="samochod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMOCHOD_RELATIONS_TYP" Association="Self.FK_SAMOCHOD_RELATIONS_TYP">
+            <End Role="typ" EntitySet="typ" />
+            <End Role="samochod" EntitySet="samochod" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MotoJanuszModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="marka">
+          <Key>
+            <PropertyRef Name="MA_id" />
+          </Key>
+          <Property Name="MA_id" Type="Int32" Nullable="false" />
+          <Property Name="MA_nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="samochods" Relationship="Self.FK_SAMOCHOD_RELATIONS_MARKA" FromRole="marka" ToRole="samochod" />
+        </EntityType>
+        <EntityType Name="samochod">
+          <Key>
+            <PropertyRef Name="SA_id" />
+          </Key>
+          <Property Name="SA_id" Type="Int32" Nullable="false" />
+          <Property Name="TY_id" Type="Int32" Nullable="false" />
+          <Property Name="MA_id" Type="Int32" Nullable="false" />
+          <Property Name="ST_id" Type="Int32" Nullable="false" />
+          <Property Name="SA_model" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SA_stan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SA_cena" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="SA_kolor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SA_rok_produkcji" Type="Int32" />
+          <Property Name="SA_kraj_pochodzenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SA_liczba_miejsc" Type="Int32" />
+          <NavigationProperty Name="marka" Relationship="Self.FK_SAMOCHOD_RELATIONS_MARKA" FromRole="samochod" ToRole="marka" />
+          <NavigationProperty Name="status" Relationship="Self.FK_SAMOCHOD_POSIADA_STATUS" FromRole="samochod" ToRole="status" />
+          <NavigationProperty Name="typ" Relationship="Self.FK_SAMOCHOD_RELATIONS_TYP" FromRole="samochod" ToRole="typ" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="ST_id" />
+          </Key>
+          <Property Name="ST_id" Type="Int32" Nullable="false" />
+          <Property Name="ST_nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="samochods" Relationship="Self.FK_SAMOCHOD_POSIADA_STATUS" FromRole="status" ToRole="samochod" />
+        </EntityType>
+        <EntityType Name="typ">
+          <Key>
+            <PropertyRef Name="TY_id" />
+          </Key>
+          <Property Name="TY_id" Type="Int32" Nullable="false" />
+          <Property Name="TY_nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="samochods" Relationship="Self.FK_SAMOCHOD_RELATIONS_TYP" FromRole="typ" ToRole="samochod" />
+        </EntityType>
+        <Association Name="FK_SAMOCHOD_RELATIONS_MARKA">
+          <End Role="marka" Type="Self.marka" Multiplicity="1" />
+          <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marka">
+              <PropertyRef Name="MA_id" />
+            </Principal>
+            <Dependent Role="samochod">
+              <PropertyRef Name="MA_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMOCHOD_POSIADA_STATUS">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="ST_id" />
+            </Principal>
+            <Dependent Role="samochod">
+              <PropertyRef Name="ST_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMOCHOD_RELATIONS_TYP">
+          <End Role="typ" Type="Self.typ" Multiplicity="1" />
+          <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typ">
+              <PropertyRef Name="TY_id" />
+            </Principal>
+            <Dependent Role="samochod">
+              <PropertyRef Name="TY_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MotoJanuszEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="markas" EntityType="Self.marka" />
+          <EntitySet Name="samochods" EntityType="Self.samochod" />
+          <EntitySet Name="status" EntityType="Self.status" />
+          <EntitySet Name="typs" EntityType="Self.typ" />
+          <AssociationSet Name="FK_SAMOCHOD_RELATIONS_MARKA" Association="Self.FK_SAMOCHOD_RELATIONS_MARKA">
+            <End Role="marka" EntitySet="markas" />
+            <End Role="samochod" EntitySet="samochods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMOCHOD_POSIADA_STATUS" Association="Self.FK_SAMOCHOD_POSIADA_STATUS">
+            <End Role="status" EntitySet="status" />
+            <End Role="samochod" EntitySet="samochods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMOCHOD_RELATIONS_TYP" Association="Self.FK_SAMOCHOD_RELATIONS_TYP">
+            <End Role="typ" EntitySet="typs" />
+            <End Role="samochod" EntitySet="samochods" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MotoJanuszModelStoreContainer" CdmEntityContainer="MotoJanuszEntities">
+          <EntitySetMapping Name="markas">
+            <EntityTypeMapping TypeName="MotoJanuszModel.marka">
+              <MappingFragment StoreEntitySet="marka">
+                <ScalarProperty Name="MA_id" ColumnName="MA_id" />
+                <ScalarProperty Name="MA_nazwa" ColumnName="MA_nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="samochods">
+            <EntityTypeMapping TypeName="MotoJanuszModel.samochod">
+              <MappingFragment StoreEntitySet="samochod">
+                <ScalarProperty Name="SA_id" ColumnName="SA_id" />
+                <ScalarProperty Name="TY_id" ColumnName="TY_id" />
+                <ScalarProperty Name="MA_id" ColumnName="MA_id" />
+                <ScalarProperty Name="ST_id" ColumnName="ST_id" />
+                <ScalarProperty Name="SA_model" ColumnName="SA_model" />
+                <ScalarProperty Name="SA_stan" ColumnName="SA_stan" />
+                <ScalarProperty Name="SA_cena" ColumnName="SA_cena" />
+                <ScalarProperty Name="SA_kolor" ColumnName="SA_kolor" />
+                <ScalarProperty Name="SA_rok_produkcji" ColumnName="SA_rok_produkcji" />
+                <ScalarProperty Name="SA_kraj_pochodzenia" ColumnName="SA_kraj_pochodzenia" />
+                <ScalarProperty Name="SA_liczba_miejsc" ColumnName="SA_liczba_miejsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="MotoJanuszModel.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="ST_id" ColumnName="ST_id" />
+                <ScalarProperty Name="ST_nazwa" ColumnName="ST_nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="typs">
+            <EntityTypeMapping TypeName="MotoJanuszModel.typ">
+              <MappingFragment StoreEntitySet="typ">
+                <ScalarProperty Name="TY_id" ColumnName="TY_id" />
+                <ScalarProperty Name="TY_nazwa" ColumnName="TY_nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

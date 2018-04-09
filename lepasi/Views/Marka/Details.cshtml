@@ -1,0 +1,35 @@
+﻿@model lepasi.marka
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Models/Table/Edity.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>marka</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MA_nazwa)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MA_nazwa)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MA_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
